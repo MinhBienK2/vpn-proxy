@@ -1,0 +1,18 @@
+services:
+  vpn-proxy:
+    image: qmcgaw/gluetun
+    container_name: vpn-proxy
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    ports:
+      - "192.168.15.248:1111:8888/tcp"
+      - "127.0.0.1:1111:8888/tcp"
+    volumes:
+      - ./custom.ovpn:/gluetun/custom.conf:ro
+    env_file:
+      - .env
+    environment:
+      - OPENVPN_PASSWORD=${OPENVPN_PASSWORD}
+    restart: 'no'
