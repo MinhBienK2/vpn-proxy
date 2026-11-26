@@ -47,7 +47,13 @@ Mặc định script sẽ xuất ra `./custom.ovpn` (hoặc truyền thêm tham 
 
 ### 2. Tạo file `.env`
 
-Tạo file `.env` ở thư mục gốc của dự án với các biến môi trường sau:
+Sao chép từ file mẫu `.env.example` và điền thông tin tài khoản của bạn:
+
+```bash
+cp .env.example .env
+```
+
+Nội dung mẫu trong `.env.example`:
 
 ```dotenv
 VPN_SERVICE_PROVIDER=custom
@@ -55,9 +61,9 @@ VPN_TYPE=openvpn
 OPENVPN_CUSTOM_CONFIG=/gluetun/custom.conf
 HTTPPROXY=on
 
-OPENVPN_USER=<ten-dang-nhap-vpn>
-OPENVPN_BASE_PASSWORD=<mat-khau-vpn-khong-kem-otp>
-OTP_AUTH_URI=<otpauth://totp/... hoac secret Base32>
+OPENVPN_USER=your_openvpn_username
+OPENVPN_BASE_PASSWORD=your_openvpn_password_without_otp
+OTP_AUTH_URI=
 ```
 
 Chi tiết các biến trong `.env`:
